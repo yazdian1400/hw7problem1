@@ -1,18 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical"
     tools:context=".MainActivity">
-
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/tv_screen"
+        tools:text="screen"
+        android:textColor="@color/white"
+        android:gravity="center_vertical"
+        android:layout_marginStart="32dp"
+        android:textSize="48sp"
+        android:layout_weight="3" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            tools:text="toolbar"
+            tools:textColor="@color/white"
+            android:backgroundTint="@color/gray700"
+            tools:gravity="center"
+            android:layout_marginHorizontal="4dp"
+            android:layout_height="match_parent"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/btn_delete"
+            android:text="@string/delete"
+            android:textSize="16sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray700"
+            android:textColor="@color/white"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit7"
+            android:text="@string/_7"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit8"
+            android:text="@string/_8"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit9"
+            android:text="@string/_9"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/division"
+            android:text="@string/division"
+            android:textSize="48dp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray700"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit4"
+            android:text="@string/_4"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit5"
+            android:text="@string/_5"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit6"
+            android:text="@string/_6"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/multiplication"
+            android:text="@string/multiplication"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray700"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit1"
+            android:text="@string/_1"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit2"
+            android:text="@string/_2"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit3"
+            android:text="@string/_3"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/subtraction"
+            android:text="@string/subtraction"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray700"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/point"
+            android:text="@string/point"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"
+            tools:ignore="NestedWeights" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/digit0"
+            android:text="@string/_0"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray500"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/equality"
+            android:text="@string/equality"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray700"
+            android:textColor="@color/white"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/addition"
+            android:text="@string/addition"
+            android:textSize="48sp"
+            android:layout_marginHorizontal="4dp"
+            android:backgroundTint="@color/gray700"
+            android:textColor="@color/white"/>
+    </LinearLayout>
+
+</LinearLayout>
