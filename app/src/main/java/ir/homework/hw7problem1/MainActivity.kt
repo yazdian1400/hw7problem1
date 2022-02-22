@@ -29,42 +29,60 @@ class MainActivity : AppCompatActivity() {
 
         //Toast.makeText(this,"${doCalculations(numberList, signList)} ${signList.size}",Toast.LENGTH_LONG).show()
 
-        binding.digit1.setOnClickListener{
-            onDigitClick('1')
-        }
-        binding.addition.setOnClickListener{
-            if (digitList.size == 0){
-                Toast.makeText(this,"Invalid format used.",Toast.LENGTH_LONG).show()
-            }
-            else {
-                binding.tvScreen.text = binding.tvScreen.text.toString() + " + "
-                numberList.add(toNumber(digitList))
-                digitList.clear()
-                signList.add('+')
-            }
-        }
-        binding.point.setOnClickListener{
-            onPointClick()
-        }
-        binding.equality.setOnClickListener{
-            if (digitList.size == 0){
-                Toast.makeText(this,"Invalid format used.",Toast.LENGTH_LONG).show()
-            }
-            else if (signList.size == 0){ }
-            else {
-                numberList.add(toNumber(digitList))
-                digitList.clear()
-                //binding.tvScreen.text = binding.tvScreen.text.toString() + " = "
-                binding.tvScreen.text = doCalculations(numberList, signList).toString()
-                Toast.makeText(this, " ${numberList.first()}", Toast.LENGTH_LONG).show()
-            }
-        }
-        binding.division.setOnClickListener{
-            onSignClick('+')
-        }
+        setOnClickListeners()
     }
 
+    private fun setOnClickListeners() {
+        binding.digit0.setOnClickListener {
+            onDigitClick('0')
+        }
+        binding.digit1.setOnClickListener {
+            onDigitClick('1')
+        }
+        binding.digit2.setOnClickListener {
+            onDigitClick('2')
+        }
+        binding.digit3.setOnClickListener {
+            onDigitClick('3')
+        }
+        binding.digit4.setOnClickListener {
+            onDigitClick('4')
+        }
+        binding.digit5.setOnClickListener {
+            onDigitClick('5')
+        }
+        binding.digit6.setOnClickListener {
+            onDigitClick('6')
+        }
+        binding.digit7.setOnClickListener {
+            onDigitClick('7')
+        }
+        binding.digit8.setOnClickListener {
+            onDigitClick('8')
+        }
+        binding.digit9.setOnClickListener {
+            onDigitClick('9')
+        }
 
+        binding.point.setOnClickListener {
+            onPointClick()
+        }
+        binding.division.setOnClickListener {
+            onSignClick('/')
+        }
+        binding.multiplication.setOnClickListener {
+            onSignClick('*')
+        }
+        binding.addition.setOnClickListener {
+            onSignClick('+')
+        }
+        binding.subtraction.setOnClickListener {
+            onSignClick('-')
+        }
+        binding.equality.setOnClickListener {
+            onEqualityClick()
+        }
+    }
 
     private fun toNumber(digitList: MutableList<String>): Double{
        return digitList.reduce{str1: String, str2: String -> str1 + str2}.toDouble()
@@ -111,7 +129,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onDigitClick(char: Char){
-        if (numberList.size > signList.size)    clearScreen()
+        if (lastInput == InputType.EQUALITY){
+            clearScreen()
+            numberList.clear()
+        }
         binding.tvScreen.text = binding.tvScreen.text.toString() + char.toString()
         digitList.add(char.toString())
         lastInput = InputType.DIGIT
@@ -119,22 +140,37 @@ class MainActivity : AppCompatActivity() {
 
     private fun onPointClick(){
         if (lastInput != InputType.DIGIT)   messageInvalidFormat()
-        binding.tvScreen.text = binding.tvScreen.text.toString() + "."
-        digitList.add(".")
-        lastInput = InputType.POINT
+        else {
+            binding.tvScreen.text = binding.tvScreen.text.toString() + "."
+            digitList.add(".")
+            lastInput = InputType.POINT
+        }
     }
 
     private fun onSignClick(sign: Char) {
-        if (digitList.size == 0) {
-            messageInvalidFormat()
-        } else {
+        if (lastInput != InputType.DIGIT)   messageInvalidFormat()
+        else {
             binding.tvScreen.text = binding.tvScreen.text.toString() + " " + sign.toString() + " "
             numberList.add(toNumber(digitList))
             digitList.clear()
             signList.add(sign)
-            Toast.makeText(this, " ${numberList.first()}", Toast.LENGTH_LONG).show()
+            lastInput = InputType.SIGN
         }
     }
+
+    private fun onEqualityClick() {
+        if (lastInput != InputType.DIGIT)   messageInvalidFormat()
+        else if (signList.size == 0){ }     //invalid
+        else {
+            binding.tvScreen.text = binding.tvScreen.text.toString() + " = "
+            numberList.add(toNumber(digitList))
+            digitList.clear()
+            binding.tvScreen.text = doCalculations(numberList, signList).toString()
+            signList.clear()
+            lastInput = InputType.EQUALITY
+        }
+    }
+
     private fun messageInvalidFormat(){
         Toast.makeText(this, "Invalid format used.", Toast.LENGTH_LONG).show()
     }
@@ -143,5 +179,6 @@ class MainActivity : AppCompatActivity() {
 enum class InputType{
     DIGIT,
     SIGN,
-    POINT
+    POINT,
+    EQUALITY
 }
