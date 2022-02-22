@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     var digitList = mutableListOf<String>()
     var numberList = mutableListOf<Double>()
     var signList = mutableListOf<Char>()
+    var lastInput = InputType.DIGIT
     lateinit var screen: String
 
     @SuppressLint("SetTextI18n")
@@ -43,8 +44,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.point.setOnClickListener{
-            binding.tvScreen.text = binding.tvScreen.text.toString() + "."
-            digitList.add(".")
+            onPointClick()
         }
         binding.equality.setOnClickListener{
             if (digitList.size == 0){
@@ -60,18 +60,12 @@ class MainActivity : AppCompatActivity() {
             }
         }
         binding.division.setOnClickListener{
-            if (digitList.size == 0){
-                Toast.makeText(this,"Invalid format used.",Toast.LENGTH_LONG).show()
-            }
-            else {
-                binding.tvScreen.text = binding.tvScreen.text.toString() + " / "
-                numberList.add(toNumber(digitList))
-                digitList.clear()
-                signList.add('/')
-                Toast.makeText(this, " ${numberList.first()}", Toast.LENGTH_LONG).show()
-            }
+            onSignClick('+')
         }
     }
+
+
+
     private fun toNumber(digitList: MutableList<String>): Double{
        return digitList.reduce{str1: String, str2: String -> str1 + str2}.toDouble()
     }
@@ -120,5 +114,34 @@ class MainActivity : AppCompatActivity() {
         if (numberList.size > signList.size)    clearScreen()
         binding.tvScreen.text = binding.tvScreen.text.toString() + char.toString()
         digitList.add(char.toString())
+        lastInput = InputType.DIGIT
     }
+
+    private fun onPointClick(){
+        if (lastInput != InputType.DIGIT)   messageInvalidFormat()
+        binding.tvScreen.text = binding.tvScreen.text.toString() + "."
+        digitList.add(".")
+        lastInput = InputType.POINT
+    }
+
+    private fun onSignClick(sign: Char) {
+        if (digitList.size == 0) {
+            messageInvalidFormat()
+        } else {
+            binding.tvScreen.text = binding.tvScreen.text.toString() + " " + sign.toString() + " "
+            numberList.add(toNumber(digitList))
+            digitList.clear()
+            signList.add(sign)
+            Toast.makeText(this, " ${numberList.first()}", Toast.LENGTH_LONG).show()
+        }
+    }
+    private fun messageInvalidFormat(){
+        Toast.makeText(this, "Invalid format used.", Toast.LENGTH_LONG).show()
+    }
+}
+
+enum class InputType{
+    DIGIT,
+    SIGN,
+    POINT
 }
