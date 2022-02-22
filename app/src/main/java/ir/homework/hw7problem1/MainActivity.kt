@@ -22,13 +22,6 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.tvScreen.text = ""
-//        digitList = mutableListOf("1", "0", ".", "5", "1")
-//        numberList = mutableListOf(3.0, 2.0, 5.0)
-//        signList = mutableListOf('/', '-')
-
-        //Toast.makeText(this,"${doCalculations(numberList, signList)} ${signList.size}",Toast.LENGTH_LONG).show()
-
         setOnClickListeners()
     }
 
@@ -91,29 +84,21 @@ class MainActivity : AppCompatActivity() {
     private fun doCalculations(numberList: MutableList<Double>, signList: MutableList<Char>): Double{
         var index: Int
         while(signList.size != 0){
-            if (signList.contains('*')) {
-                index = signList.lastIndexOf('*')
-                numberList[index] = numberList[index] * numberList[index + 1]
-                numberList.removeAt(index + 1)
-                signList.removeAt(index)
-                continue
-            }
-            else if (signList.contains('/')) {
-                index = signList.lastIndexOf('/')
-                numberList[index] = numberList[index] / numberList[index + 1]
-                numberList.removeAt(index + 1)
-                signList.removeAt(index)
-                continue
-            }
-            else if (signList.contains('+')) {
-                index = signList.lastIndexOf('+')
-                numberList[index] = numberList[index] + numberList[index + 1]
+            if (signList.contains('*') || signList.contains('/')) {
+                index = signList.indexOfFirst{it == '*' || it == '/'}
+                numberList[index] = when(signList[index]){
+                    '*' -> numberList[index] * numberList[index + 1]
+                    else -> numberList[index] / numberList[index + 1]
+                }
                 numberList.removeAt(index + 1)
                 signList.removeAt(index)
             }
-            else if (signList.contains('-')) {
-                index = signList.lastIndexOf('-')
-                numberList[index] = numberList[index] - numberList[index + 1]
+            else if (signList.contains('+') || signList.contains('-')) {
+                index = signList.indexOfFirst{it == '+' || it == '-'}
+                numberList[index] = when(signList[index]) {
+                    '+' -> numberList[index] + numberList[index + 1]
+                    else -> numberList[index] - numberList[index + 1]
+                }
                 numberList.removeAt(index + 1)
                 signList.removeAt(index)
             }
@@ -148,11 +133,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun onSignClick(sign: Char) {
-        if (lastInput != InputType.DIGIT)   messageInvalidFormat()
+        if (lastInput == InputType.SIGN || lastInput == InputType.POINT)   messageInvalidFormat()
         else {
             binding.tvScreen.text = binding.tvScreen.text.toString() + " " + sign.toString() + " "
-            numberList.add(toNumber(digitList))
-            digitList.clear()
+            if (lastInput == InputType.DIGIT) {
+                numberList.add(toNumber(digitList))
+                digitList.clear()
+            }
             signList.add(sign)
             lastInput = InputType.SIGN
         }
@@ -165,7 +152,7 @@ class MainActivity : AppCompatActivity() {
             binding.tvScreen.text = binding.tvScreen.text.toString() + " = "
             numberList.add(toNumber(digitList))
             digitList.clear()
-            binding.tvScreen.text = doCalculations(numberList, signList).toString()
+            binding.tvScreen.text = removeZeroFromNumber(doCalculations(numberList, signList))
             signList.clear()
             lastInput = InputType.EQUALITY
         }
@@ -173,6 +160,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun messageInvalidFormat(){
         Toast.makeText(this, "Invalid format used.", Toast.LENGTH_LONG).show()
+    }
+
+    private fun removeZeroFromNumber(num: Double): String{
+        if (num == num.toInt().toDouble())  return num.toInt().toString()
+        return num.toString()
     }
 }
 
