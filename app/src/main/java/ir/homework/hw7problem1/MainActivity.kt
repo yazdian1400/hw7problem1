@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOnClickListeners() {
+        binding.btnDelete.setOnClickListener{
+            clearScreen()
+        }
         binding.digit0.setOnClickListener {
             onDigitClick('0')
         }
@@ -152,7 +155,7 @@ class MainActivity : AppCompatActivity() {
             binding.tvScreen.text = binding.tvScreen.text.toString() + " = "
             numberList.add(toNumber(digitList))
             digitList.clear()
-            binding.tvScreen.text = removeZeroFromNumber(doCalculations(numberList, signList))
+            binding.tvScreen.text = removeExtraZeroFromNumber(doCalculations(numberList, signList))
             signList.clear()
             lastInput = InputType.EQUALITY
         }
@@ -162,7 +165,7 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(this, "Invalid format used.", Toast.LENGTH_LONG).show()
     }
 
-    private fun removeZeroFromNumber(num: Double): String{
+    private fun removeExtraZeroFromNumber(num: Double): String{
         if (num == num.toInt().toDouble())  return num.toInt().toString()
         return num.toString()
     }
