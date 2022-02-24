@@ -21,7 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.4"
         android:orientation="horizontal">
 
         <Button
@@ -58,7 +58,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit7"
             android:text="@string/_7"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"
@@ -69,7 +69,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit8"
             android:text="@string/_8"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -79,7 +79,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit9"
             android:text="@string/_9"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -89,7 +89,7 @@
             android:layout_height="match_parent"
             android:id="@+id/division"
             android:text="@string/division"
-            android:textSize="48dp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray700"
             android:textColor="@color/white"/>
@@ -107,7 +107,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit4"
             android:text="@string/_4"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"
@@ -118,7 +118,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit5"
             android:text="@string/_5"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -128,7 +128,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit6"
             android:text="@string/_6"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -138,7 +138,7 @@
             android:layout_height="match_parent"
             android:id="@+id/multiplication"
             android:text="@string/multiplication"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray700"
             android:textColor="@color/white"/>
@@ -156,7 +156,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit1"
             android:text="@string/_1"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"
@@ -167,7 +167,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit2"
             android:text="@string/_2"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -177,7 +177,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit3"
             android:text="@string/_3"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -187,7 +187,7 @@
             android:layout_height="match_parent"
             android:id="@+id/subtraction"
             android:text="@string/subtraction"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray700"
             android:textColor="@color/white"/>
@@ -205,7 +205,7 @@
             android:layout_height="match_parent"
             android:id="@+id/point"
             android:text="@string/point"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"
@@ -216,7 +216,7 @@
             android:layout_height="match_parent"
             android:id="@+id/digit0"
             android:text="@string/_0"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray500"
             android:textColor="@color/white"/>
@@ -226,7 +226,7 @@
             android:layout_height="match_parent"
             android:id="@+id/equality"
             android:text="@string/equality"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray700"
             android:textColor="@color/white"/>
@@ -236,7 +236,7 @@
             android:layout_height="match_parent"
             android:id="@+id/addition"
             android:text="@string/addition"
-            android:textSize="48sp"
+            android:textSize="24sp"
             android:layout_marginHorizontal="4dp"
             android:backgroundTint="@color/gray700"
             android:textColor="@color/white"/>
